@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/BgColor"
+
+    >
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="@drawable/circle_shap"
+        android:layout_width="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_height="150dp"
+        android:gravity="center"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="999"
+            android:textStyle="bold"
+            android:textSize="40dp"
+            android:fontFamily="@font/metal_mania"
+            android:textColor="#FFFF"
+            />
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" UC"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:fontFamily="@font/metal_mania"
+        android:textColor="#FFFF"
+        />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DAILY BONUS"
+            android:textSize="30dp"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/metal_mania"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GET FREE UC "
+            android:textSize="30dp"
+            android:padding="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/metal_mania"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AMAZING BONUS"
+            android:padding="5dp"
+            android:textSize="30dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/metal_mania"/>
+
+
+
+    </LinearLayout>
+</LinearLayout>

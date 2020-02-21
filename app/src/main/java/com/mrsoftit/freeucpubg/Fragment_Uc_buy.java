@@ -1,5 +1,6 @@
 package com.mrsoftit.freeucpubg;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +70,22 @@ public Fragment_Uc_buy(){
                 holder.ucAmount.setText(model.getUcAmount());
                 holder.ucTaka.setText(model.getUcTaka());
 
+                holder.ucTaka.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String ucAmount = model.getUcAmount();
+                        String ucTaka = model.getUcTaka();
+
+                        Intent uclist = new Intent(getContext(), OrderActivity.class);
+                        uclist.putExtra("ucAmu",ucAmount);
+                        uclist.putExtra("ucTaka",ucTaka);
+
+                        startActivity(uclist);
+
+                    }
+                });
+
 
             }
 
@@ -94,6 +111,7 @@ public Fragment_Uc_buy(){
     public static class RoutinViewHolder extends RecyclerView.ViewHolder {
 
         TextView ucAmount,ucTaka ;
+
 
 
         public RoutinViewHolder(@NonNull View itemView) {

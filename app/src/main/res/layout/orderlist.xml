@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+  >
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:background="@color/BgColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+
+            >
+            <TextView
+
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="STATUS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="EMAIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="UC AMOUNT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="UC PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="GAMER ID "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="NICK NAME "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="TRANSACTION ID "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/status"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="STATUS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:id="@+id/email"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:maxLines="1"
+                android:textColor="#FFF"
+                android:text="EMAIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:id="@+id/ucamuont"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="UC AMOUNT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:id="@+id/ucprice"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="UC PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:id="@+id/gramerid"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="GAMER ID "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:id="@+id/gamerNikck"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="NICK NAME "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+
+            <TextView
+                android:id="@+id/transectionid"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:text="TRANSACTION ID "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

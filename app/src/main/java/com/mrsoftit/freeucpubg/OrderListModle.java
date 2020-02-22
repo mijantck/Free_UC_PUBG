@@ -1,6 +1,7 @@
 package com.mrsoftit.freeucpubg;
 
 public class OrderListModle {
+    private String status;
     private String customarName;
     private String customarEmgail;
     private String ucAmu;
@@ -12,8 +13,8 @@ public class OrderListModle {
 
     public OrderListModle(){}
 
-
-    public OrderListModle(String customarName, String customarEmgail, String ucAmu, String ucTaka, String id, String nickName, String bkasTransectionId) {
+    public OrderListModle(String status, String customarName, String customarEmgail, String ucAmu, String ucTaka, String id, String nickName, String bkasTransectionId) {
+        this.status = status;
         this.customarName = customarName;
         this.customarEmgail = customarEmgail;
         this.ucAmu = ucAmu;
@@ -23,6 +24,9 @@ public class OrderListModle {
         this.bkasTransectionId = bkasTransectionId;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
     public String getCustomarName() {
         return customarName;

@@ -69,9 +69,9 @@ public class OrderActivity extends AppCompatActivity {
 
 
 
-                       notebookRef.add(new OrderListModle( customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1));
+                       notebookRef.add(new OrderListModle( "Processing",customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1));
 
-                       notebookRefAdmin.add(new OrderListModle( customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1));
+                       notebookRefAdmin.add(new OrderListModle( "Processing",customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1));
 
                        Toast.makeText(v.getContext(), "Order Complete", Toast.LENGTH_SHORT).show();
 

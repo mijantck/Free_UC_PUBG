@@ -16,9 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Fragment_My_info extends Fragment {
 
@@ -26,12 +30,19 @@ public class Fragment_My_info extends Fragment {
     public Fragment_My_info() {
     }
 
+    String uid = FirebaseAuth.getInstance().getUid();
+    CollectionReference notebookRefuc = FirebaseFirestore.getInstance()
+            .collection("Users").document(uid).collection("ads");
+
+    FirebaseFirestore firestore;
+
     private View offerView;
 
     private Button ucOrderListButton, WeddroUcButton;
     RecyclerView recyclerView;
+    TextView ucviewrmyinfo;
 
-    String uid = FirebaseAuth.getInstance().getUid();
+
     CollectionReference notebookRef = FirebaseFirestore.getInstance()
             .collection("Users").document(uid).collection("order");
     CollectionReference notebookRefAdmin = FirebaseFirestore.getInstance()
@@ -46,6 +57,7 @@ public class Fragment_My_info extends Fragment {
         WeddroUcButton = offerView.findViewById(R.id.WeddroUcButton);
 
         ucOrderListButton = offerView.findViewById(R.id.ucOrderListButton);
+        ucviewrmyinfo = offerView.findViewById(R.id.ucviewrmyinfo);
 
         recyclerView = offerView.findViewById(R.id.ucOrederlist);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(offerView.getContext(), 1, GridLayoutManager.VERTICAL, false);
@@ -59,14 +71,16 @@ public class Fragment_My_info extends Fragment {
 
 
                 boolean open = true;
-                if (open == true){
 
-                    recyclerView.setVisibility(View.VISIBLE);
-                    open = false;
-                }else if (open == false){
+
+                if (open != true){
 
                     recyclerView.setVisibility(View.GONE);
                     open = true;
+
+                }else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    open = false;
                 }
 
             }
@@ -82,6 +96,23 @@ public class Fragment_My_info extends Fragment {
 
         super.onStart();
 
+
+        firestore = FirebaseFirestore.getInstance();
+
+        notebookRefuc.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        AdsUcModel adsUcModel = document.toObject(AdsUcModel.class);
+                        ucviewrmyinfo.setText(adsUcModel.getUcAmount()+"");
+                    }
+                } else {
+
+                }
+            }
+        });
 
 
         FirestoreRecyclerOptions options =

@@ -10,29 +10,30 @@
     <LinearLayout
         android:layout_gravity="center"
         android:background="@drawable/circle_shap"
-        android:layout_width="150dp"
-        android:layout_marginTop="50dp"
-        android:layout_height="150dp"
+        android:layout_width="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="80dp"
         android:gravity="center"
 
         >
         <TextView
+            android:id="@+id/ucviewr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="999"
             android:textStyle="bold"
-            android:textSize="40dp"
+            android:textSize="20dp"
             android:fontFamily="@font/metal_mania"
             android:textColor="#FFFF"
             />
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" UC"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:fontFamily="@font/metal_mania"
-        android:textColor="#FFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" UC"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:fontFamily="@font/metal_mania"
+            android:textColor="#FFFF"
         />
 
     </LinearLayout>
@@ -56,6 +57,7 @@
             android:fontFamily="@font/metal_mania"/>
 
         <Button
+            android:id="@+id/AdsReword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="GET FREE UC "

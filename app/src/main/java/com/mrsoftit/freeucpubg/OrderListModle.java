@@ -9,11 +9,14 @@ public class OrderListModle {
     private String id;
     private String nickName;
     private String bkasTransectionId;
+    private String userID;
+    private String ducID;
 
 
     public OrderListModle(){}
 
-    public OrderListModle(String status, String customarName, String customarEmgail, String ucAmu, String ucTaka, String id, String nickName, String bkasTransectionId) {
+
+    public OrderListModle(String status, String customarName, String customarEmgail, String ucAmu, String ucTaka, String id, String nickName, String bkasTransectionId, String userID, String ducID) {
         this.status = status;
         this.customarName = customarName;
         this.customarEmgail = customarEmgail;
@@ -22,6 +25,8 @@ public class OrderListModle {
         this.id = id;
         this.nickName = nickName;
         this.bkasTransectionId = bkasTransectionId;
+        this.userID = userID;
+        this.ducID = ducID;
     }
 
     public String getStatus() {
@@ -54,5 +59,13 @@ public class OrderListModle {
 
     public String getBkasTransectionId() {
         return bkasTransectionId;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public String getDucID() {
+        return ducID;
     }
 }

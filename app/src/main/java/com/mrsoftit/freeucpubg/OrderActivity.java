@@ -1,5 +1,6 @@
 package com.mrsoftit.freeucpubg;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -9,18 +10,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class OrderActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
     String ucAmu,uctaka;
-
+    String id1;
+    String nickName1;
+    String transection1;
     TextView ucAmuTextView,ucTakaTextview,orederNow;
     EditText id,nickName,transactuionId;
+
+    String docId;
+
 
     String uid = FirebaseAuth.getInstance().getUid();
     CollectionReference notebookRef = FirebaseFirestore.getInstance()
@@ -53,12 +66,20 @@ public class OrderActivity extends AppCompatActivity {
 
                orederNow.setOnClickListener(new View.OnClickListener() {
                    @Override
-                   public void onClick(View v) {
+                   public void onClick(final View v) {
+
+                       progressDialog = new ProgressDialog(OrderActivity.this);
+                       progressDialog.setMessage("Loading..."); // Setting Message
+                       progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
 
 
-                       String id1 = id.getText().toString();
-                       String nickName1 = nickName.getText().toString();
-                       String transection1 = transactuionId.getText().toString();
+
+
+                       id1  = id.getText().toString();
+                       nickName1 = nickName.getText().toString();
+                       transection1  = transactuionId.getText().toString();
+
+
 
                        if (id1.trim().isEmpty() || nickName1.trim().isEmpty() || transection1.trim().isEmpty() ) {
                            Toast.makeText(v.getContext(), "Please insert All Data", Toast.LENGTH_SHORT).show();
@@ -69,14 +90,40 @@ public class OrderActivity extends AppCompatActivity {
 
 
 
-                       notebookRef.add(new OrderListModle( "Processing",customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1));
 
-                       notebookRefAdmin.add(new OrderListModle( "Processing",customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1));
+                       progressDialog.show();
 
-                       Toast.makeText(v.getContext(), "Order Complete", Toast.LENGTH_SHORT).show();
+                       notebookRef.add(new OrderListModle( "Processing",customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1,uid,null))
+                        .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                                if (task.isSuccessful()){
+
+                                    docId = task.getResult().getId();
+
+                                    Toast.makeText(v.getContext(), docId.toString(), Toast.LENGTH_SHORT).show();
+
+                                    notebookRefAdmin.add(new OrderListModle( "Processing",customerUserName,customerUserEmail,ucAmu,uctaka,id1,nickName1,transection1,uid,docId))
+                                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                                                    Toast.makeText(v.getContext(), docId.toString() +"admin ", Toast.LENGTH_SHORT).show();
+
+                                                    progressDialog.dismiss();
+                                                    finish();
+                                                }
+                                            });
+
+                                }
 
 
-                       finish();
+                            }
+                        });
+
+
+
 
 
 

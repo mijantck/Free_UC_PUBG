@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RewordActivity"></activity>
+        <activity android:name=".WedrdoActivity"></activity>
+        <activity android:name=".DailyActivity" />
+        <activity android:name=".OrderHIstoryActivity" />
+        <activity android:name=".WheelActivity" />
+        <activity android:name=".RewordActivity" />
         <activity android:name=".OrderActivity" />
         <activity android:name=".signIn_activity">
             <intent-filter>
@@ -24,7 +28,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

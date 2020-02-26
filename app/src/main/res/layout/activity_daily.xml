@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RewordActivity">
-
+    tools:context=".DailyActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_support"
         android:layout_width="match_parent"
@@ -24,6 +23,10 @@
             android:textColor="#FFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+
+
+
 
 
         <LinearLayout
@@ -74,7 +77,6 @@
 
 
     </androidx.appcompat.widget.Toolbar>
-
     <LinearLayout
         android:id="@+id/countlayout"
         android:layout_below="@id/toolbar_support"
@@ -98,10 +100,10 @@
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
-        android:layout_below="@id/toolbar_support"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2">
+            android:layout_below="@id/toolbar_support"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
 
             <TextView
                 android:id="@+id/havecount"
@@ -116,7 +118,7 @@
 
 
 
-    </LinearLayout>
+        </LinearLayout>
 
 
 
@@ -124,33 +126,21 @@
 
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:id="@+id/countButton"
-        android:gravity="center"
+    <androidx.cardview.widget.CardView
         android:layout_below="@id/countlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/adsCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/cardColor">
+        android:layout_height="wrap_content"
+        android:background="@color/cardColor">
 
-            <ImageView
-                android:id="@+id/AdsReword"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@color/cardColor"
-                android:src="@drawable/watching" />
-
-        </androidx.cardview.widget.CardView>
-
-
-
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/dealyBunas"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/cardColor"
+            android:src="@drawable/dalyi_bunas" />
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

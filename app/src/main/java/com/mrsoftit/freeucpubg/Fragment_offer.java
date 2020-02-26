@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class Fragment_offer extends Fragment {
 public Fragment_offer(){}
 
     private View offerView;
-    private Button freeUc;
+    private ImageView freeUc,spinBtnUc,dealyBunas;
     public TextView ucview;
 
     String uid = FirebaseAuth.getInstance().getUid();
@@ -51,9 +52,22 @@ public Fragment_offer(){}
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         offerView = inflater.inflate(R.layout.offer_task, container, false);
-       freeUc = offerView.findViewById(R.id.AdsReword);
-       ucview = offerView.findViewById(R.id.ucviewr);
 
+       freeUc = offerView.findViewById(R.id.AdsReword);
+       spinBtnUc = offerView.findViewById(R.id.spinBtnUc);
+        dealyBunas = offerView.findViewById(R.id.dealyBunas);
+
+
+        spinBtnUc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(offerView.getContext(),WheelActivity.class);
+
+                startActivity(intent);
+
+            }
+        });
 
 
 
@@ -67,34 +81,19 @@ public Fragment_offer(){}
            }
        });
 
+        dealyBunas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(offerView.getContext(),DailyActivity.class);
 
+                startActivity(intent);
+
+            }
+        });
 
 
         return offerView;
     }
 
-    @Override
-    public void onStart() {
-
-        super.onStart();
-
-        firestore = FirebaseFirestore.getInstance();
-
-        notebookRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        AdsUcModel adsUcModel = document.toObject(AdsUcModel.class);
-                       ucview.setText(adsUcModel.getUcAmount()+"");
-                    }
-                } else {
-
-                }
-            }
-        });
-
-    }
 }

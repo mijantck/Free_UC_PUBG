@@ -7,8 +7,6 @@
   >
 
     <LinearLayout
-        android:layout_margin="10dp"
-        android:background="@color/BgColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="4">
@@ -25,11 +23,23 @@
 
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="STATUS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="DATE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metal_mania"
@@ -37,10 +47,10 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="EMAIL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,10 +59,10 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="UC AMOUNT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,10 +71,10 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="UC PRICE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,10 +83,10 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="GAMER ID "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,10 +95,10 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="NICK NAME "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,10 +108,10 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="TRANSACTION ID "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,11 +133,23 @@
                 android:id="@+id/status"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="STATUS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/metal_mania"
+                />
+            <TextView
+                android:id="@+id/dateOr"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="DATE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metal_mania"
@@ -136,11 +158,11 @@
                 android:id="@+id/email"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
                 android:maxLines="1"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="EMAIL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,10 +172,10 @@
                 android:id="@+id/ucamuont"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="UC AMOUNT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,10 +185,10 @@
                 android:id="@+id/ucprice"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="UC PRICE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,10 +198,10 @@
                 android:id="@+id/gramerid"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="GAMER ID "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -189,10 +211,10 @@
                 android:id="@+id/gamerNikck"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
+
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="NICK NAME "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -203,10 +225,9 @@
                 android:id="@+id/transectionid"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:gravity="center"
                 android:layout_gravity="center"
                 android:textSize="15dp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="TRANSACTION ID "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

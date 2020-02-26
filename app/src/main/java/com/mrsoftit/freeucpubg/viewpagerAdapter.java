@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class viewpagerAdapter extends FragmentStatePagerAdapter {
 
-    private String fragmnet[] = {"FREE UC OFFER ","UC BUY ","MY INFO"};
+    private String fragmnet[] = {"FREE UC OFFER ","UC BUY "};
 
     public viewpagerAdapter(FragmentManager fm) {
         super(fm);
@@ -20,11 +20,8 @@ public class viewpagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new Fragment_offer();
 
-            case 1:
-                return new Fragment_Uc_buy();
-
             default:
-                return new  Fragment_My_info();
+                return new  Fragment_Uc_buy();
 
         }
 
@@ -33,7 +30,7 @@ public class viewpagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
 
-        return 3;
+        return 2;
     }
 
     @Nullable

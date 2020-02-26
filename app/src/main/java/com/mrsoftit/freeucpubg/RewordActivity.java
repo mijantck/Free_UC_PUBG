@@ -2,11 +2,13 @@ package com.mrsoftit.freeucpubg;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +39,11 @@ public class RewordActivity extends AppCompatActivity {
 
 
 
-    private Button adsreword;
-    private TextView havecount,haveuc;
+
+    private TextView havecount,ucTolal;
+
+    private ImageView AdsReword;
+    private CardView adsCount;
 
     ProgressDialog progressDialog;
 
@@ -48,6 +53,8 @@ public class RewordActivity extends AppCompatActivity {
             .collection("Users").document(uid).collection("ads");
 
     FirebaseFirestore firestore;
+
+    public TextView ucTextView;
 
     public double uc = 000.00;
     public int count = 5;
@@ -84,16 +91,24 @@ public class RewordActivity extends AppCompatActivity {
                    entry = adsUcModel.isFirstTime();
                    ucid = adsUcModel.getUcid();
                    havecount.setText(count+"");
-                    haveuc.setText(uc+"");
+                    ucTolal.setText(uc+"");
 
-                   if ((datenew != date ) && count == 0 ){
+
+                    if (count == -1){
+                        havecount.setText("00");
+                    }
+
+                   if ( datenew != date){
+
+                       if (count == -1)
+                       {
 
                        notebookRef.document(ucid)
                                .update("count",5).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
                            public void onComplete(@NonNull Task<Void> task) {
                            }
-                       });
+                       });}
                    }
                 }
             }
@@ -108,17 +123,18 @@ public class RewordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reword);
 
-            adsreword = findViewById(R.id.adsreword);
+
             havecount = findViewById(R.id.havecount);
-            haveuc = findViewById(R.id.haveuc);
+            ucTolal = findViewById(R.id.ucTolal);
+            AdsReword = findViewById(R.id.AdsReword);
+            adsCount = findViewById(R.id.adsCount);
 
             progressDialog = new ProgressDialog(RewordActivity.this);
             progressDialog.setMessage("Loading..."); // Setting Message
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 
-
-            adsreword.setOnClickListener(new View.OnClickListener() {
+            AdsReword.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -126,7 +142,6 @@ public class RewordActivity extends AppCompatActivity {
                     progressDialog.show();
 
                     Date calendar = Calendar.getInstance().getTime();
-
                     DateFormat df = new SimpleDateFormat("yyyyMMdd");
                     String todayString = df.format(calendar);
                     int datenew = Integer.parseInt(todayString);
@@ -141,7 +156,7 @@ public class RewordActivity extends AppCompatActivity {
                         uc = uc +.25;
 
                         havecount.setText(count+"");
-                        haveuc.setText(uc+"");
+                        ucTolal.setText(uc+"");
 
                         notebookRef.add(new AdsUcModel(uc,count,datenew,true,null))
                                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -169,7 +184,7 @@ public class RewordActivity extends AppCompatActivity {
                     } else if (count >= 1 && count <= 6 ){
 
                             count --;
-                        uc = uc +.25;
+                             uc = uc +.25;
 
                             havecount.setText(count+"");
 
@@ -182,33 +197,41 @@ public class RewordActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
 
                             }
-                        });}
+                        });
+                             }
 
+                        progressDialog.dismiss();
                             Toast.makeText(RewordActivity.this, count+"", Toast.LENGTH_SHORT).show();
                         }
-                        if (count == 0 ){
+                        else if (count == 0 ){
 
                             havecount.setText(count+"");
+
                             havecount.setText("nxt Day try "+count);
 
                             if(ucid != null){
 
                             notebookRef.document(ucid)
-                                    .update("ucAmount",uc,"count",count,"date",datenew)
+                                    .update("ucAmount",uc,"count",-1,"date",datenew)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(RewordActivity.this, "dismis ", Toast.LENGTH_SHORT).show();
                                     progressDialog.dismiss();
                                 }
-                            });}
+                            });
 
-                        }
+                            }
+
+                        }else if (count == -1){
+
+                        Toast.makeText(RewordActivity.this, " You have no change", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
                     }
 
+                    }
 
             });
+
     }
-
-
 }

@@ -3,78 +3,107 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:background="@color/BgColor"
 
     >
-    <LinearLayout
-        android:layout_gravity="center"
-        android:background="@drawable/circle_shap"
-        android:layout_width="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="80dp"
-        android:gravity="center"
 
-        >
-        <TextView
-            android:id="@+id/ucviewr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="999"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:fontFamily="@font/metal_mania"
-            android:textColor="#FFFF"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" UC"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:fontFamily="@font/metal_mania"
-            android:textColor="#FFFF"
-        />
-
-    </LinearLayout>
     <LinearLayout
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginTop="5dp"
 
-        <Button
+        android:layout_marginRight="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DAILY BONUS"
-            android:textSize="30dp"
-            android:padding="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/metal_mania"/>
+            android:orientation="horizontal"
+            android:weightSum="4">
 
-        <Button
-            android:id="@+id/AdsReword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="GET FREE UC "
-            android:textSize="30dp"
-            android:padding="5dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/metal_mania"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="AMAZING BONUS"
-            android:padding="5dp"
-            android:textSize="30dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/metal_mania"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:background="@color/cardColor">
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/spinBtnUc"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/cardColor"
+                        android:src="@drawable/spin" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:background="@color/cardColor">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardColor">
+
+                    <ImageView
+                        android:id="@+id/AdsReword"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/cardColor"
+                        android:src="@drawable/watching" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="2"
+            android:background="@color/cardColor">
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardColor">
+
+                <ImageView
+                    android:id="@+id/dealyBunas"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/cardColor"
+                    android:src="@drawable/dalyi_bunas" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
     </LinearLayout>
-</LinearLayout>

@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#36201A"
+        android:background="@color/cardColor"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -53,6 +53,8 @@
             android:id="@+id/ucTaka"
             android:textSize="20dp"
             android:padding="5dp"
+            android:textColor="#FFF"
+            android:background="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/metal_mania"/>

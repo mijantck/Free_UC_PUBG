@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1A0200</color>
-    <color name="colorPrimaryDark">#1A0200</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="BgColor">#1A0200 </color>
-    <color name="TabColor">#645C5C</color>
-    <color name="tab_background_unselected">#645C5C</color>
-    <color name="tab_background_selected">#FCFAFA</color>
+    <color name="colorPrimary">#03396c</color>
+    <color name="colorPrimaryDark">#011f4b </color>
+    <color name="colorAccent">#03396c</color>
+    <color name="BgColor">#e7eff6 </color>
+    <color name="TabColor">#005b96 </color>
+    <color name="tab_background_unselected">#03396c</color>
+    <color name="tab_background_selected">#e7eff6</color>
+    <color name="cardColor">#6B96B1</color>
 </resources>

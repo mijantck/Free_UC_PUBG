@@ -31,86 +31,86 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class signIn_activity extends AppCompatActivity {
 
 
-    private SignInButton google_sign_button;
-    GoogleSignInClient mGoogleSignInClient;
+  private SignInButton google_sign_button;
+  GoogleSignInClient mGoogleSignInClient;
 
-    private int RC_SIGN_IN = 999;
-    private String TAG = "signIn_activity";
+  private int RC_SIGN_IN = 999;
+  private String TAG = "signIn_activity";
 
-    private FirebaseAuth mAuth;
-    int mFlipping = 0 ; // Initially flipping is off
+  private FirebaseAuth mAuth;
+  int mFlipping = 0 ; // Initially flipping is off
 
-    private ProgressBar progressBar;
+  private ProgressBar progressBar;
 
-    FirebaseAuth.AuthStateListener mAuthLisenar;
+  FirebaseAuth.AuthStateListener mAuthLisenar;
 
-    ProgressDialog progressDialog;
+  ProgressDialog progressDialog;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthLisenar);
-    }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in_activity);
+  @Override
+  protected void onStart() {
+    super.onStart();
+    mAuth.addAuthStateListener(mAuthLisenar);
+  }
 
 
-
-        google_sign_button = findViewById(R.id.sign_in_button);
-        mAuth = FirebaseAuth.getInstance();
-
-         progressBar = findViewById(R.id.progresBar);
-
-        mAuthLisenar = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-
-                if (firebaseAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(signIn_activity.this,MainActivity.class));
-                    finish();
-                }
-
-            }
-        };
-
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("1032327656647-0gv4ej3dfoogsv13jm1996485inqi831.apps.googleusercontent.com")
-                .requestEmail()
-                .build();
-
-
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        google_sign_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                google_sign_button.setVisibility(View.GONE);
-                progressBar.setVisibility(View.VISIBLE);
-
-                progressDialog = new ProgressDialog(signIn_activity.this);
-                // Setting Message
-                progressDialog.setTitle("Loading..."); // Setting Title
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_sign_in_activity);
 
 
 
-                if(checkIntert()){
+    google_sign_button = findViewById(R.id.sign_in_button);
+    mAuth = FirebaseAuth.getInstance();
 
-                    signIn();
+    progressBar = findViewById(R.id.progresBar);
 
-                    progressBar.setVisibility(View.GONE);
-                    google_sign_button.setVisibility(View.VISIBLE);
-                }else {
+    mAuthLisenar = new FirebaseAuth.AuthStateListener() {
+      @Override
+      public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-                    Toast.makeText(signIn_activity.this, " No internet ", Toast.LENGTH_SHORT).show();
-                }
+
+        if (firebaseAuth.getCurrentUser() != null) {
+          startActivity(new Intent(signIn_activity.this,MainActivity.class));
+          finish();
+        }
+
+      }
+    };
+
+    // Configure Google Sign In
+    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("1032327656647-0gv4ej3dfoogsv13jm1996485inqi831.apps.googleusercontent.com")
+            .requestEmail()
+            .build();
+
+
+    // Build a GoogleSignInClient with the options specified by gso.
+    mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+    google_sign_button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        google_sign_button.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
+        progressDialog = new ProgressDialog(signIn_activity.this);
+        // Setting Message
+        progressDialog.setTitle("Loading..."); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+
+
+        if(checkIntert()){
+
+          signIn();
+
+          progressBar.setVisibility(View.GONE);
+          google_sign_button.setVisibility(View.VISIBLE);
+        }else {
+
+          Toast.makeText(signIn_activity.this, " No internet ", Toast.LENGTH_SHORT).show();
+        }
 
 
 
@@ -119,74 +119,74 @@ public class signIn_activity extends AppCompatActivity {
                 }
 */
 
-            }
-        });
+      }
+    });
+  }
+
+
+
+
+  private void signIn() {
+    Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+
+    startActivityForResult(signInIntent, RC_SIGN_IN);
+
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+    if (requestCode == RC_SIGN_IN) {
+      Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+      try {
+        // Google Sign In was successful, authenticate with Firebase
+        GoogleSignInAccount account = task.getResult(ApiException.class);
+        firebaseAuthWithGoogle(account);
+      } catch (ApiException e) {
+        // Google Sign In failed, update UI appropriately
+        Log.w(TAG, "Google sign in failed", e);
+        Toast.makeText(this, "Google sign in failed ", Toast.LENGTH_SHORT).show();
+        // ...
+      }
     }
+  }
 
+  private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
+    Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
 
+    AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+    mAuth.signInWithCredential(credential)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+              @Override
+              public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                  // Sign in success, update UI with the signed-in user's information
+                  Log.d(TAG, "signInWithCredential:success");
+                  FirebaseUser user = mAuth.getCurrentUser();
 
+                  //  updateUI(user);
+                } else {
+                  // If sign in fails, display a message to the user.
+                  Log.w(TAG, "signInWithCredential:failure", task.getException());
+                  Toast.makeText(signIn_activity.this, " Any Thing Problem", Toast.LENGTH_SHORT).show();
+                  //updateUI(null);
+                }
 
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
-                Toast.makeText(this, "Google sign in failed ", Toast.LENGTH_SHORT).show();
                 // ...
-            }
-        }
-    }
+              }
+            });
+  }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+  public boolean checkIntert(){
+    ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-
-                            //  updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(signIn_activity.this, " Any Thing Problem", Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
-                        }
-
-                        // ...
-                    }
-                });
-    }
-
-    public boolean checkIntert(){
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return networkInfo !=null && networkInfo.isConnected();
+    NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+    return networkInfo !=null && networkInfo.isConnected();
 
 
-    }
+  }
 
 
 

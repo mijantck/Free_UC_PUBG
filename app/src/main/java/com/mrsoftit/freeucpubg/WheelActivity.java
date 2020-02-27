@@ -46,22 +46,7 @@ public class WheelActivity extends AppCompatActivity {
     @BindView(R.id.wheel)
     ImageView wheel;
 
-   /* private static final String[] sectors = { "1 red", "1 black",
-            "1 red", "0.5 black", " 0.5 red", ".5 black", ".5 red", "3 black", " 3 red",
-            "3 black", "3 red","a black", "a red", "a black", "a red", "a black",
-            "2 red", "2 black", "2 red", "2 black", ".15 red", ".15 black",
-            ".15 red", ".15 black", "0 red", "0 black", "0 red", "0 black",
-            " 0 red", " 0 black", "5 red", "5 black", "5 red", "5 black",
-            "3 red", " 1 black", "1 "
-    };*/
-   /* private static final String[] sectors = { "32", "15",
-            "19", "4", "21", "2", "25", "17", "34",
-            "6", "27","13", "36", "11", "30", "8",
-            "23", "10", "5", "24", "16", "33",
-            "1", "20", "14", "31", "9", "22",
-            "18", "29", "7", "28", "12", "35",
-            "3", "26", "zero"
-    };*/
+
     private static final int[] sectors = { 32, 15,
             19, 4, 21, 2, 25, 17, 34,
             6, 27,13, 36, 11, 30, 8,
